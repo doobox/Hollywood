@@ -60,7 +60,7 @@
 
 $(document).ready(function(){
 	$("#hollywoodText").hollywood({
-		colorArray: ["#336699","#ff0000","#CCCCCC"],
+		colorArray: ["#5E405B","#859B5D","#E94B7C","#87D4DE","#EDB524"],
 		animationSpeed: 1000,
 		randomSpeed: true
 	});
