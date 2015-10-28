@@ -12,16 +12,30 @@
         // Add a reverse reference to the DOM object
         base.$el.data("hollywood", base);
         
+        base.currentColor = 0;
+        
         base.init = function(){
             base.options = $.extend({},$.hollywood.defaultOptions, options);
-            base.animateColor(0);
+            base.animateColor(0,base.options.randomSpeed);
         };
         
         // Sample Function, Uncomment to use
-        base.animateColor = function(x){
+        base.animateColor = function(x,randomspeed){
+	        if(randomspeed){
+		        var animationspeed = Math.floor(Math.random() * 500) + 50;
+	        }else{
+		        var animationspeed = base.options.animationSpeed;
+	        }
         	$("#hollywoodText").animate({
 	          color: base.options.colorArray[x]
-	        }, base.options.animationSpeed );
+	        }, animationspeed, function() {
+		        if(base.currentColor == base.options.colorArray.length - 1){
+			        base.currentColor = 0
+			    }else{
+				    base.currentColor++
+			    }
+				base.animateColor(base.currentColor,base.options.randomSpeed);
+    		});
         };
         
         // Run initializer
@@ -29,8 +43,9 @@
     };
     
     $.hollywood.defaultOptions = {
-        colorArray: "[#ff0000]",
-        animationSpeed: 1000
+        colorArray: ["#ff0000"],
+        animationSpeed: 1000,
+        randomSpeed: false
     };
     
     $.fn.hollywood = function(options){
@@ -45,7 +60,8 @@
 
 $(document).ready(function(){
 	$("#hollywoodText").hollywood({
-		colorArray: ["#336699"],
-		animationSpeed: 1000
+		colorArray: ["#336699","#ff0000","#CCCCCC"],
+		animationSpeed: 1000,
+		randomSpeed: true
 	});
 });
