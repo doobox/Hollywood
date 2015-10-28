@@ -1,10 +1,11 @@
 # Hollywood jQuery Plugin
 
 Text colour animation effect
+**Work in progress**
 
 ## Documentation
 
-To create a font selector simply run the plugin on a standard html input element.
+Coming soon
 
 ### How to use
 
@@ -14,3 +15,4 @@ To create a font selector simply run the plugin on a standard html input element
 
 ### Options
 
+Coming soon
