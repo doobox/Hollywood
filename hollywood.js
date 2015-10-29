@@ -13,9 +13,15 @@
         base.$el.data("hollywood", base);
         
         base.currentColor = 0;
+        base.chars = "";
         
         base.init = function(){
             base.options = $.extend({},$.hollywood.defaultOptions, options);
+            //base.chars = base.$el.text().split("");
+            //base.$el.empty();
+		    //$.each(base.chars, function (i, el) {
+		    	//base.$el.append("<span>" + el + "</span");
+		    //});
             base.animateColor(0,base.options.randomSpeed);
         };
         
@@ -26,7 +32,7 @@
 	        }else{
 		        var animationspeed = base.options.animationSpeed;
 	        }
-        	$("#hollywoodText").animate({
+        	$(base.$el).animate({
 	          color: base.options.colorArray[x]
 	        }, animationspeed, function() {
 		        if(base.currentColor == base.options.colorArray.length - 1){
@@ -63,5 +69,11 @@ $(document).ready(function(){
 		colorArray: ["#5E405B","#859B5D","#E94B7C","#87D4DE","#EDB524"],
 		animationSpeed: 1000,
 		randomSpeed: true
+	});
+	
+	$("#hollywoodTextTwo").hollywood({
+		colorArray: ["#5E405B","#859B5D","#E94B7C","#87D4DE","#EDB524"],
+		animationSpeed: 500,
+		randomSpeed: false
 	});
 });
